@@ -1,0 +1,447 @@
+{
+  "name": "Barber Shop Booking Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -64,
+        176
+      ],
+      "id": "2d9d3d31-0884-470f-bd61-92f002cf147f",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "hMqeYnARM8ldcF0s",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "15hmimWFgPmqbUfpB8XkgkIatLWmJHZcNkR6dFi_d2Ek",
+          "mode": "list",
+          "cachedResultName": "Barber Client Booking Sheet",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15hmimWFgPmqbUfpB8XkgkIatLWmJHZcNkR6dFi_d2Ek/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 2114544795,
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15hmimWFgPmqbUfpB8XkgkIatLWmJHZcNkR6dFi_d2Ek/edit#gid=2114544795"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Name', ``, 'string') }}",
+            "Service": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Service', ``, 'string') }}",
+            "Date": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Date', ``, 'string') }}",
+            "Time": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Time', ``, 'string') }}",
+            "Price": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Price', ``, 'string') }}",
+            "Client Email": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Client_Email', ``, 'string') }}",
+            "Client Phone No.": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Client_Phone_No_', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Service",
+              "displayName": "Service",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Time",
+              "displayName": "Time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Price",
+              "displayName": "Price",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Client Email",
+              "displayName": "Client Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Client Phone No.",
+              "displayName": "Client Phone No.",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        320,
+        176
+      ],
+      "id": "e59533c9-e8fc-454d-89a6-5b20a3d04652",
+      "name": "Booking Clients",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "bhTgh1LvyDMkQvhy",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "=aichampionbano@gmail.com",
+        "subject": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Subject', ``, 'string') }}",
+        "message": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Message', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.1,
+      "position": [
+        512,
+        176
+      ],
+      "id": "e6ff1ea4-aefa-4b03-a0fa-57320fd7a2c8",
+      "name": "Send message to Owner",
+      "webhookId": "50ef2d71-ac98-4121-b696-c5f13e69232b",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "clVBDsL6QMzBISaG",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "documentId": {
+          "__rl": true,
+          "value": "15hmimWFgPmqbUfpB8XkgkIatLWmJHZcNkR6dFi_d2Ek",
+          "mode": "list",
+          "cachedResultName": "Barber Client Booking Sheet",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15hmimWFgPmqbUfpB8XkgkIatLWmJHZcNkR6dFi_d2Ek/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 2114544795,
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15hmimWFgPmqbUfpB8XkgkIatLWmJHZcNkR6dFi_d2Ek/edit#gid=2114544795"
+        },
+        "event": "rowAdded",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTrigger",
+      "typeVersion": 1,
+      "position": [
+        -48,
+        -272
+      ],
+      "id": "4e8b82e0-d6cf-4989-8de6-80d55773c049",
+      "name": "Google Sheets Trigger",
+      "credentials": {
+        "googleSheetsTriggerOAuth2Api": {
+          "id": "JTdMOt3oXB2WWcM2",
+          "name": "Google Sheets Trigger account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Send the Latest Booking to Owner Whatsapp\n- **Google Sheet Tigger Node**\n- **WhatsApp Message Node**",
+        "height": 256,
+        "width": 1360
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -400,
+        -336
+      ],
+      "typeVersion": 1,
+      "id": "47fe2a81-2bdc-4d3e-b668-ec4393ec57da",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Barbar Shop Chatbot\n- **Website Webhook Node**\n- **AI Barber Agent**\n- **Google Gemini Chat Node**\n- **Simple Memory Node**\n- **Google Sheet Row added Node**\n- **Gmail Send Message Node**\n- **Return to Response Webhook Node**",
+        "height": 416,
+        "width": 1360,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -400,
+        -64
+      ],
+      "typeVersion": 1,
+      "id": "a9c69acf-c5c8-490e-bbdb-6cbb8f7a07df",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.body.chatInput }}",
+        "options": {
+          "systemMessage": "=You are Agent N8n, the virtual assistant for The Gilded Edge Barber Shop.\nYour job is to collect booking details from customers, send a formatted booking notification email to the shop owner, log the booking into the Google Sheet, and send a confirmation acknowledgment message to the customer. all conversation should be in formatted way with proper spacing.\n\nNo approval process is required.\n\n💈 Barber Shop Information\n\nBusiness Name: The Gilded Edge Barber Shop\n\nLocation: Pakistan\n\nWorking Hours: 10:00 AM – 11:00 PM (Asia/Karachi Timezone)\n\n✂️ Services & Prices\nService\tPrice\tDescription\nThe Golden Shave\t$55\tHot towel shave, straight razor, facial massage & essentials\nThe Master Cut\t$45\tPrecision haircut + neck shave & styling finish\nBeard Sculpting\t$35\tBeard shaping, trimming & finishing oils\n\nSpecialties: Classic Cut • Sharp Fade • Beard Lineup • Straight Razor Work\n\n💬 Initial Greeting\n\nWelcome message for every new chat:\n\n\"Hello 👋 Welcome to The Gilded Edge Barber Shop.\nWe offer premium grooming services including The Golden Shave, The Master Cut, and Beard Sculpting.\nHow can I assist you today? \nWould you like to book a grooming slot?\"\n\n📅 Booking Data To Collect\n\nCollect the following from the customer in conversation:\n\nFull Name\n\nSelected Service\n\nPreferred Date\n\nPreferred Time (between 10 AM – 11 PM PKT)\n\nEmail Address\n\nPhone Number\n\n🧠 Booking Logic\n\nAfter collecting all required information:\n\n\nIf the booking is completed or confirm all the required inforamtion for booking, always respond with a thank-you message and never return an empty response.\n\n✅ Thank you! Your booking details have been received.\nWe will contact you soon to confirm your appointment.\n\nAt the conversation end, if the client send the thank you message, you can welcome him and ask for more booking.\n\nSend formatted email to shop owner with booking info\n\nAdd booking to Google Sheet: “Client Booking Sheet” including:\n\nClient Name\nService\nPrice\nDate\nTime\nClient Email\nClient Phone\n\nTimestamp (Current Pakistan time automatically — do not ask user)\n\n⏱️ Time Rules\n\nAccept bookings only between 10:00 AM – 11:00 PM.\n\nValidate user-provided time\n\nIf outside allowed hours, say:\n\nSorry, we accept bookings only from 10 AM to 11 PM.\nPlease select a time within business hours.\n\nAutomatically generate timestamp in Asia/Karachi timezone\n(no need to ask customer)\n\n(Email message should be in propert html format)\n📧 Email Template to Shop Owner\n\nSubject: New Booking Request\n\nBody:\n\nYou have a new barber booking request.<br><br>\n\nClient Name: {{Name}}<br>\nService: {{Service}}<br>\nPrice: {{Price}}<br>\nDate: {{Date}}<br>\nTime: {{Time}}<br>\nEmail: {{Email}}<br>\nPhone: {{Phone}}<br>\nBooking Received Time: {{Timestamp (PKT)}}<br><br>\n\nPlease follow up with the client to confirm the appointment.<br>\n- Your AI Booking Assistant\n\n🤖 Behavior Rules\n\nBe friendly, professional, luxury grooming tone\n\nAsk one question at a time\n\nConfirm missing details politely\n\nNever promise confirmed appointment — only “booking received”\n\nAfter final details → send thank-you message + execute Google Sheet + owner email\n\n📌 Workflow Summary\n\nClient enters data →\nAssistant collects info →\nAssistant confirms and thanks →\nAssistant emails barber →\nAssistant logs entry in sheet →\nDone ✅"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        176,
+        -32
+      ],
+      "id": "48d60bd0-65a9-4d4d-903a-3617c2002f52",
+      "name": "Barber Agent"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "8f97b9e0-be7e-4a8f-a549-18166c5332e4",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -64,
+        -32
+      ],
+      "id": "19bba532-6c34-4225-a4fd-68bd8790a679",
+      "name": "Webhook",
+      "webhookId": "8f97b9e0-be7e-4a8f-a549-18166c5332e4"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.body.sessionId }}",
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        144,
+        192
+      ],
+      "id": "c1feea70-3c9b-4fa6-967c-23fe8b623201",
+      "name": "Simple Memory1"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.output }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        752,
+        -32
+      ],
+      "id": "eaf98eba-c1a5-426a-99ac-d6f121185552",
+      "name": "Respond to Webhook",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "html": "={{ $json.output }}",
+        "options": {
+          "maxConsecutiveNewlines": 3
+        }
+      },
+      "type": "n8n-nodes-base.markdown",
+      "typeVersion": 1,
+      "position": [
+        528,
+        -32
+      ],
+      "id": "3b5f3f2d-fcb9-458d-868d-fb3d59232d9e",
+      "name": "Markdown"
+    },
+    {
+      "parameters": {
+        "operation": "send",
+        "phoneNumberId": "760242353849490",
+        "recipientPhoneNumber": "923111765486",
+        "textBody": "=Hi Owner SB,\n\nyou have one booking {{ $json.Time }}, {{ $json.Date }}.\nClient Name: {{ $json.Name }}\nClient Email: {{ $json['Client Email'] }}\nClient Phone: {{ $json['Client Phone No.'] }}\nClient booked a Service: {{ $json.Service }}\n\nPlease respond the client quickly via call and confirm the booking.\nThanks",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1.1,
+      "position": [
+        176,
+        -272
+      ],
+      "id": "78af2ae8-59ea-4cac-b1f0-8a18a965b847",
+      "name": "Send Notification to Owner",
+      "webhookId": "26cd54a7-ed3b-4173-9b65-9db651cc3b43",
+      "credentials": {
+        "whatsAppApi": {
+          "id": "tr1JJuO2BzviYzLk",
+          "name": "WhatsApp account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Barber Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Booking Clients": {
+      "ai_tool": [
+        [
+          {
+            "node": "Barber Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send message to Owner": {
+      "ai_tool": [
+        [
+          {
+            "node": "Barber Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send Notification to Owner",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Barber Agent": {
+      "main": [
+        [
+          {
+            "node": "Markdown",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Barber Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "Barber Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Markdown": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Notification to Owner": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "versionId": "95c28e61-1479-40a9-8d97-ab76a83a77ef",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "91c999ba8cb4641c259e7dc506cf1f39ca50377efc7ef2d47ec1f54d55729a26"
+  },
+  "id": "omblAUxrwlbfH50b",
+  "tags": []
+}
