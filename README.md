@@ -132,23 +132,13 @@ If you want a **custom AI booking chatbot** for your salon, clinic, or any servi
 I can help you build it using **n8n** and **AI automation tools**.
 
 📩 **Let’s connect!**  
-Email: yourname@email.com  
-LinkedIn: [Your LinkedIn Profile](https://linkedin.com)  
-Website: [Your Portfolio or Company Website](https://yourwebsite.com)
-
----
-
-### ⭐ Don’t forget to star this repository if you found it useful!  
-> “Automate your business. Save time. Serve smarter.”  
-
-
----
-
-## 📞 Contact
-
 **Developer:** Abdullah Shahzad  
-**Email:** support@xpertswp.com  
-**Website:** [https://xpertswp.com](https://xpertswp.com)
+Email: shahzadabdullah37@gmail.com
+Company Email: info@xpertswp.com 
+LinkedIn: [Abdullah Shahzad]([https://linkedin.com](https://www.linkedin.com/in/withabdullahshahzad/))  
+Website: [XpertsWP](https://xpertswp.com/)
+
+---
 
 💡 *If you need a custom automation workflow or chatbot integration for your business — Let’s collaborate!*
 
