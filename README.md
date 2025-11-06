@@ -135,7 +135,7 @@ I can help you build it using **n8n** and **AI automation tools**.
 **Developer:** Abdullah Shahzad  
 Email: shahzadabdullah37@gmail.com
 Company Email: info@xpertswp.com 
-LinkedIn: [Abdullah Shahzad]([https://linkedin.com](https://www.linkedin.com/in/withabdullahshahzad/))  
+LinkedIn: [Abdullah Shahzad](https://www.linkedin.com/in/withabdullahshahzad/)  
 Website: [XpertsWP](https://xpertswp.com/)
 
 ---
