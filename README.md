@@ -1,101 +1,146 @@
-# Barbar-Shop-Booking-Agent
-This project is an AI-powered Booking Workflow designed for a Barber Shop website chatbot. It automates the entire appointment booking process — from client submission to owner approval and email notifications — ensuring a smooth, real-time, and professional experience for both customers and the shop owner.
+# 💈 AI Barber Shop Booking Automation Workflow (n8n)
 
-# 💈 AI-Powered Barber Shop Booking Workflow
-
-
-## 🧠 Overview
-This project is an **AI-powered Booking Workflow** designed for a **Barber Shop website chatbot**.  
-It automates the complete appointment booking process — from collecting client details to owner confirmation and automated email notifications — providing a **smooth and professional experience** for both the customer and shop owner.
+This project is an **AI-powered Barber Shop Booking System** built using **n8n** — designed to automate appointment bookings, notifications, and record management for barber shops and small businesses.
 
 ---
 
-## ⚙️ How It Works
+## 🧠 Project Overview
 
-1. **Client Interaction via Chatbot**
-   - The client provides:
-     - Full Name  
-     - Email Address  
-     - Phone Number  
-     - Desired Booking Date & Time  
-   - Once all details are submitted, the chatbot replies instantly:
-     > “Thank you for booking a slot! We’ll confirm your booking very soon.”
+The **AI Barber Booking Workflow** allows customers to chat naturally with an AI assistant to book appointments.  
+It automatically saves client data, sends notifications, and keeps both the **shop owner** and the **client** updated — without any manual effort.
 
-2. **Automatic Email to Shop Owner**
-   - The system sends a booking notification email to the shop owner with all client details.
-   - The owner can **approve** or **reject** the booking request.
-
-3. **Automatic Client Notification**
-   - Once the owner takes action:
-     - ✅ Approved → Client receives a confirmation email.  
-     - ❌ Rejected → Client receives a polite rejection email.
-
-4. **Record Keeping**
-   - Every booking (with approval/rejection status) is automatically logged in a **Google Sheet** named **“Client Booking Sheet”**.
+This workflow integrates:
+- AI Chatbot (Google Gemini Model)
+- Google Sheets for data storage
+- Gmail for email notifications
+- WhatsApp messages for instant owner alerts
 
 ---
 
-## 🧩 Tools & Technologies
+## ⚙️ Workflow Structure
 
-| Component | Purpose |
-|------------|----------|
-| **n8n (Workflow Automation)** | Core engine for booking automation |
-| **Chatbot Integration** | Collects user booking data via website |
-| **Google Sheets** | Stores and tracks all booking records |
-| **Email Nodes** | Sends emails to both shop owner and clients |
-| **Asia/Karachi Timezone** | Ensures accurate local booking time |
+### 1️⃣ Barber Shop Chatbot
+- Collects client booking details (Name, Email, Phone, Service, Date & Time)
+- Validates time between **10 AM – 11 PM Pakistan Time**
+- Saves booking record to **Google Sheet**
+- Sends confirmation to the client
+- Notifies the shop owner via **Email**
 
----
-
-## 🕒 Workflow Logic
-
-Client Chat → Collect Details → Confirm Message → 
-Send Email to Owner → Await Approval → 
-Send Response to Client → Log Record in Google Sheet
+### 2️⃣ Send Latest Booking to Owner on WhatsApp
+- Automatically triggers when a new booking is added in the Google Sheet
+- Sends WhatsApp notification with booking details to the owner in real-time
 
 ---
 
-## 🧠 Key Features
+## 💡 Features
 
-- ✅ Fully Automated Booking System  
-- 💬 Smart Chatbot Interaction  
-- 💌 Dynamic Email Notifications  
-- 🧾 Google Sheets Integration  
-- 🌍 Local Timezone Accuracy (Asia/Karachi)  
-- 🔁 Real-time Owner-Client Communication  
-
----
-
-## 🌍 Ideal Use Cases
-
-This automation is ideal for small service-based businesses such as:
-
-- Barber Shops  
-- Hair Salons  
-- Beauty Clinics  
-- Personal Trainers  
-- Home Services  
-
-It saves time, reduces manual errors, and ensures instant communication between client and owner.
+✅ AI-powered booking chatbot  
+✅ Automated email notifications to owner  
+✅ Real-time WhatsApp alerts  
+✅ Google Sheet record-keeping  
+✅ Timezone awareness (Asia/Karachi)  
+✅ Simple and professional customer experience  
+✅ Fully scalable for other businesses  
 
 ---
 
-## 🚀 Future Enhancements
+## 🏗️ Workflow Components
 
-- 💳 Add Payment Gateway Integration (Stripe / PayPal)  
-- 📱 Include SMS Notifications for Bookings  
-- 📊 Create Admin Dashboard for Analytics  
-- 🤖 Add AI for Smart Slot Recommendation  
+| Component | Description |
+|------------|-------------|
+| **Webhook Node** | Receives user data from website chatbot |
+| **AI Agent Node (Gemini Model)** | Handles natural conversation with client |
+| **Simple Memory Node** | Retains session memory between messages |
+| **Google Sheets Node** | Stores all booking data |
+| **Gmail Node** | Sends formatted booking emails to the shop owner |
+| **WhatsApp Node** | Sends instant alerts when a new record is added |
 
 ---
 
-## 📁 Project Structure
+## ✂️ Available Services
 
-📦 Barber-Booking-Workflow
- ┣ 📜 README.md
- ┣ 🖼️ Banner Image
- ┣ ⚙️ Workflow (n8n JSON Export)
- ┗ 📊 Client Booking Sheet (Google Sheet Integration)
+| Service | Description | Price |
+|----------|--------------|-------|
+| **The Golden Shave** | Hot towel, straight razor, facial massage, oils & aftershave balm | $55 |
+| **The Master Cut** | Expert haircut tailored to style, with precise neck shave & styling | $45 |
+| **Beard Sculpting** | Line up, trim, shaping with clippers and premium oils & balms | $35 |
+
+---
+
+## 🧭 Use Cases
+
+This workflow is not limited to barber shops — it can be adapted for:
+
+- 💆‍♂️ **Salons & Spas** – Manage client bookings effortlessly  
+- 🏥 **Clinics & Therapists** – Automate appointment reminders  
+- 🎓 **Coaches & Trainers** – Collect and manage client sessions  
+- 🏡 **Home Services** – Streamline scheduling and notifications  
+
+---
+
+## 🧑‍💻 User Manual
+
+### 🪄 Step 1: Client Interaction
+The chatbot greets the client and asks for:
+- Full Name  
+- Email  
+- Phone Number  
+- Service Type  
+- Preferred Date & Time (10 AM – 11 PM)
+
+### 🪄 Step 2: Booking Confirmation
+After collecting all data, the chatbot replies:
+> ✅ Thank you for booking a slot with us. We’ll confirm your appointment very soon.
+
+### 🪄 Step 3: Notification to Owner
+- The shop owner receives an **email** with all booking details.
+- The booking record is added to the **Google Sheet**.
+- A **WhatsApp message** is automatically sent to the owner.
+
+### 🪄 Step 4: Record Management
+All booking data is stored safely in the “Client Booking Sheet” for tracking and reporting.
+
+---
+
+## 🕒 Working Hours
+> **10:00 AM – 11:00 PM (Asia/Karachi timezone)**  
+All bookings outside this window are politely declined.
+
+---
+
+## 🧰 Tech Stack
+
+- **n8n** (Workflow Automation)
+- **Google Gemini AI Model**
+- **Google Sheets API**
+- **Gmail API**
+- **WhatsApp API**
+- **Webhook Integration**
+
+---
+
+## 📽️ Project Presentation
+
+This project was first published a month ago and now re-introduced with a **video demonstration**.  
+Special thanks to **Sir Zafar Iqbal** 🙏 for encouraging us to face the camera confidently and showcase our skills to the world.
+
+---
+
+## 🚀 Call to Action
+
+If you want a **custom AI booking chatbot** for your salon, clinic, or any service-based business —  
+I can help you build it using **n8n** and **AI automation tools**.
+
+📩 **Let’s connect!**  
+Email: yourname@email.com  
+LinkedIn: [Your LinkedIn Profile](https://linkedin.com)  
+Website: [Your Portfolio or Company Website](https://yourwebsite.com)
+
+---
+
+### ⭐ Don’t forget to star this repository if you found it useful!  
+> “Automate your business. Save time. Serve smarter.”  
+
 
 ---
 
